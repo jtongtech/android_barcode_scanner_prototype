@@ -2,7 +2,9 @@
 <manifest xmlns:android="http://schemas.android.com/apk/res/android"
     package="tongtechnologies.com.barcode">
 
+    <uses-permission android:name="android.permission.ACCESS_NETWORK_STATE" />
     <uses-permission android:name="android.permission.CAMERA" />
+    <uses-permission android:name="android.permission.INTERNET" />
 
     <application
         android:allowBackup="true"
@@ -22,7 +24,8 @@
         <activity android:name=".FullScannerActivity" />
         <activity android:name=".FullScannerFragmentActivity" />
         <activity android:name=".SimpleScannerActivity" />
-        <activity android:name=".SimpleScannerFragmentActivity"></activity>
+        <activity android:name=".SimpleScannerFragmentActivity" />
+        <activity android:name=".WebView"></activity>
     </application>
 
 </manifest>

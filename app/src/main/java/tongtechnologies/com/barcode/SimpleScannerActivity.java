@@ -8,9 +8,11 @@ import android.widget.Toast;
 
 import me.dm7.barcodescanner.zbar.Result;
 import me.dm7.barcodescanner.zbar.ZBarScannerView;
+import android.content.Intent;
 
 public class SimpleScannerActivity extends BaseScannerActivity implements ZBarScannerView.ResultHandler {
     private ZBarScannerView mScannerView;
+    public static final String UPC= "tongtechnologies.com.barcode.UPC";
 
     @Override
     public void onCreate(Bundle state) {
@@ -37,9 +39,12 @@ public class SimpleScannerActivity extends BaseScannerActivity implements ZBarSc
 
     @Override
     public void handleResult(Result rawResult) {
+        Intent intent = new Intent(SimpleScannerActivity.this, WebView.class);
         Toast.makeText(this, "Contents = " + rawResult.getContents() +
                 ", Format = " + rawResult.getBarcodeFormat().getName(), Toast.LENGTH_SHORT).show();
         Log.e("UPC is", rawResult.getContents());
+        String upc = rawResult.getContents();
+        intent.putExtra(UPC,upc);
         // Note:
         // * Wait 2 seconds to resume the preview.
         // * On older devices continuously stopping and resuming camera preview can result in freezing the app.
@@ -51,5 +56,6 @@ public class SimpleScannerActivity extends BaseScannerActivity implements ZBarSc
                 mScannerView.resumeCameraPreview(SimpleScannerActivity.this);
             }
         }, 2000);
+        startActivity(intent);
     }
 }
