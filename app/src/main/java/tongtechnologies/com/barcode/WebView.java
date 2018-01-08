@@ -43,7 +43,7 @@ public class WebView extends AppCompatActivity {
         String UPC = intent.getStringExtra(SimpleScannerActivity.UPC);
         getWindow().requestFeature(Window.FEATURE_NO_TITLE);
         if (isNetworkStatusAvialable(getApplicationContext())) {
-            Toast.makeText(getApplicationContext(), "Thriva", Toast.LENGTH_SHORT).show();
+//            Toast.makeText(getApplicationContext(), "Thriva", Toast.LENGTH_SHORT).show();
             Uri.Builder builder = new Uri.Builder();
             builder.scheme("https")
                     .authority("barcodeprototype.herokuapp.com")
@@ -77,8 +77,8 @@ public class WebView extends AppCompatActivity {
 //                        startActivity(i);
 //                        return true;
 ////                        return super.shouldOverrideUrlLoading(view, url);
-                    } else if (url.contains("/logout")) { //check for logout in url
-                        Intent intent = new Intent(WebView.this, MainActivity.class);
+                    } else if (url.equals("https://barcodeprototype.herokuapp.com/")) { //check for logout in url
+                        Intent intent = new Intent(WebView.this, SimpleScannerActivity.class);
                         startActivity(intent);
                         return true;
 //                        return super.shouldOverrideUrlLoading(view, url);

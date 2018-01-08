@@ -40,8 +40,8 @@ public class SimpleScannerActivity extends BaseScannerActivity implements ZBarSc
     @Override
     public void handleResult(Result rawResult) {
         Intent intent = new Intent(SimpleScannerActivity.this, WebView.class);
-        Toast.makeText(this, "Contents = " + rawResult.getContents() +
-                ", Format = " + rawResult.getBarcodeFormat().getName(), Toast.LENGTH_SHORT).show();
+//        Toast.makeText(this, "Contents = " + rawResult.getContents() +
+//                ", Format = " + rawResult.getBarcodeFormat().getName(), Toast.LENGTH_SHORT).show();
         Log.e("UPC is", rawResult.getContents());
         String upc = rawResult.getContents();
         intent.putExtra(UPC,upc);
