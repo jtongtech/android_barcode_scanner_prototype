@@ -27,6 +27,10 @@
         android:layout_width="match_parent"
         android:text="Scan a Barcode"
         android:onClick="launchSimpleActivity" />
+    <Button android:layout_height="wrap_content"
+        android:layout_width="match_parent"
+        android:text="Take a Picture for the DB"
+        android:onClick="launchPutImageInDb" />
     <!--<Button android:layout_height="wrap_content"-->
         <!--android:layout_width="match_parent"-->
         <!--android:text="@string/simple_fragment_sample"-->

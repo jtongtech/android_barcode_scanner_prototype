@@ -31,6 +31,10 @@ public class MainActivity extends AppCompatActivity {
         launchActivity(SimpleScannerActivity.class);
     }
 
+    public void launchPutImageInDb(View v) {
+        launchActivity(captureImageForConversion.class);
+    }
+
     public void launchSimpleFragmentActivity(View v) {
         launchActivity(SimpleScannerFragmentActivity.class);
     }
