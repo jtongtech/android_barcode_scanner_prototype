@@ -58,18 +58,39 @@ public class captureImageForConversion extends AppCompatActivity {
 
     }
 
+    public static String encodeTobase64(Bitmap bitmap) {
+        Bitmap immagex=bitmap;
+        ByteArrayOutputStream baos = new ByteArrayOutputStream();
+        immagex.compress(Bitmap.CompressFormat.JPEG, 100, baos);
+        byte[] b = baos.toByteArray();
+        String imageEncoded = Base64.encodeToString(b,Base64.DEFAULT);
+
+        Log.e("LOOK", imageEncoded);
+        return imageEncoded;
+    }
+
     //If you want to return image taken
     @Override
     protected  void onActivityResult(int requestCode, int resultCode, Intent data) {
 //        super.onActivityResult(requestCode, resultCode, data);
         if(requestCode == REQUEST_IMAGE_CAPTURE && resultCode == RESULT_OK) {
             //Get the photo
-            Log.e("data is", data.getExtras().toString());
+//            Log.e("data is", data.getExtras().toString());
 //            Bundle extras = data.getExtras();
 //            Bitmap photo = (Bitmap) extras.get("data");
-            Bitmap bitmap = (Bitmap)data.getExtras().get("data");
-            Log.e("bitmap is", bitmap.toString());
-            userImageView.setImageBitmap(bitmap);
+            Bitmap userImage = (Bitmap)data.getExtras().get("data");
+//            Log.e("bitmap is", bitmap.toString());
+            userImageView.setImageBitmap(userImage);
+//            ByteArrayOutputStream stream = new ByteArrayOutputStream();
+//            userImage.compress(Bitmap.CompressFormat.JPEG, 100, stream);
+//            byte[] byteArray = stream.toByteArray();
+//            String decoded = Base64.encodeToString(byteArray, Base64.DEFAULT);
+//            Log.e("encoded is", decoded);
+            ByteArrayOutputStream baos = new ByteArrayOutputStream();
+            userImage.compress(Bitmap.CompressFormat.PNG, 100, baos);
+            String imageEncoded = Base64.encodeToString(baos.toByteArray(), Base64.DEFAULT);
+            Log.e("imageEncoded is", imageEncoded);
+
 //            userImageView.setImageResource(R.drawable.hp_bot64);
 //            String photoInfo = photo.getNinePatchChunk().toString();
 //            Log.e("photo is", photoInfo);
@@ -83,6 +104,7 @@ public class captureImageForConversion extends AppCompatActivity {
 //            String encodedImage = Base64.encodeToString(byteArrayImage, Base64.DEFAULT);
 //            Log.e("encodedImage is", encodedImage);
         }
+
     }
 
 //    protected void onActivityResult(int requestCode, int resultCode, Intent data) {
